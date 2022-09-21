@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../theme.dart';
+import '../widgets/appcircle.dart';
 import '../widgets/apptile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -84,123 +85,40 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                 ))),
             SizedBox(
-                height: 81,
-                width: 1280,
-                child: Container(
-                  // color: basicBlack.highlightFade,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 6.5),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Text(""),
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0.35,
-                              minimumSize: Size.fromRadius(24.55),
-                              maximumSize: Size.fromRadius(24.55),
-                              shape: CircleBorder(),
-                              primary: Color.fromARGB(255, 242, 16, 31),
-                              shadowColor: basicBlack.background2,
-                              onPrimary:
-                                  basicWhite.highlight, // <-- Splash color
-                            ),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 6.5),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Text(""),
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0.35,
-                              minimumSize: Size.fromRadius(24.55),
-                              maximumSize: Size.fromRadius(24.55),
-                              shape: CircleBorder(),
-                              primary: basicWhite.iconbg, // <-- Button color
-                              onPrimary:
-                                  basicWhite.highlight, // <-- Splash color
-                            ),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 6.5),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Text(""),
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0.35,
-                              minimumSize: Size.fromRadius(24.55),
-                              maximumSize: Size.fromRadius(24.55),
-                              shape: CircleBorder(),
-                              primary: basicWhite.iconbg, // <-- Button color
-                              onPrimary:
-                                  basicWhite.highlight, // <-- Splash color
-                            ),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 6.5),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Text(""),
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0.35,
-                              minimumSize: Size.fromRadius(24.55),
-                              maximumSize: Size.fromRadius(24.55),
-                              shape: CircleBorder(),
-                              primary: basicWhite.iconbg, // <-- Button color
-                              onPrimary:
-                                  basicWhite.highlight, // <-- Splash color
-                            ),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 6.5),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Text(""),
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0.35,
-                              minimumSize: Size.fromRadius(24.55),
-                              maximumSize: Size.fromRadius(24.55),
-                              shape: CircleBorder(),
-                              primary: basicWhite.iconbg, // <-- Button color
-                              onPrimary:
-                                  basicWhite.highlight, // <-- Splash color
-                            ),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 6.5),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Text(""),
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0.35,
-                              minimumSize: Size.fromRadius(24.55),
-                              maximumSize: Size.fromRadius(24.55),
-                              shape: CircleBorder(),
-                              primary: basicWhite.iconbg, // <-- Button color
-                              onPrimary:
-                                  basicWhite.highlight, // <-- Splash color
-                            ),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 6.5),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Text(""),
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0.35,
-                              minimumSize: Size.fromRadius(24.55),
-                              maximumSize: Size.fromRadius(24.55),
-                              shape: CircleBorder(),
-                              primary: basicWhite.iconbg, // <-- Button color
-                              onPrimary:
-                                  basicWhite.highlight, // <-- Splash color
-                            ),
-                          )),
-                    ],
-                  ),
-                )),
+                height: (143 * devicePixelRatio),
+                child:
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:[
+                       Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
+                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 0),
+                      ),
+                       Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
+                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 1),
+                       ),
+                       Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
+                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 2),
+                       ),
+                       Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
+                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 3),
+                       ),
+                       Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
+                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 4),
+                       ),
+                       Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
+                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 5),
+                       ),
+                       Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
+                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 6),),
+                  ],
+                ),),
             SizedBox(
                 height: (73 * devicePixelRatio),
                 width: 1280,
