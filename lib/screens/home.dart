@@ -26,38 +26,42 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //double devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    double devicePixelRatio =  MediaQuery.of(context).size.height / 720 ;
+    double kAspectRatio = MediaQuery.of(context).size.aspectRatio;
+    double kScreenWidth = MediaQuery.of(context).size.width;
+    double kScreenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: basicWhite.background,
         body: Center(
             child: SizedBox(
           child: Column(children: [
             SizedBox(
-                height: 75,
+                height: (130 * devicePixelRatio),
                 child: Container(
                   // color: basicBlack.accent,
                   child:
                       Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                    Text(MediaQuery.of(context).devicePixelRatio.toString()),
+                    Text(devicePixelRatio.toString()),
                     Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 29.3, 36, 29.5),
+                        padding: EdgeInsets.fromLTRB(0, (55 * devicePixelRatio), (63 * devicePixelRatio), (55 * devicePixelRatio)),
                         child: Row(children: [
-                          const Text("21:37", style: TextStyle(fontSize: 17.7)),
+                          Text("21:37", style: TextStyle(fontSize: (20 * devicePixelRatio))),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(14, 0, 16, 0),
+                            padding: EdgeInsets.fromLTRB((24 * devicePixelRatio), 0, (26 * devicePixelRatio), 0),
                             child: Icon(
                               Icons.wifi,
-                              size: 17.7,
+                              size: (20 * devicePixelRatio),
                               color: basicWhite.fontColor,
                             ),
                           ),
-                          const Text("100%", style: TextStyle(fontSize: 17.7)),
-                          const Icon(Icons.battery_full_outlined, size: 17.7)
+                          Text("100%", style: TextStyle(fontSize: (20 * devicePixelRatio))),
+                          Icon(Icons.battery_full_outlined, size: (20 * devicePixelRatio))
                         ]))
                   ]),
                 )),
             SizedBox(
-                height: 213,
-                width: 1280,
+                height: (374 * devicePixelRatio),
                 child: Container(
                     // color: basicBlack.highlight,
                     child: SizedBox(
@@ -72,10 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             controller: PageController(
                                 initialPage: 0,
                                 keepPage: false,
-                                viewportFraction: 0.19),
+                                viewportFraction: 0.185),
                             itemCount: 10,
                             itemBuilder: ((context, index) =>
-                                AppTile(text: "number " + index.toString()))
+                                AppTile(screenscale: devicePixelRatio, text: "number " + index.toString()))
                                 ,
                                 ),
                 ))),
@@ -198,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 )),
             SizedBox(
-                height: 42,
+                height: (73 * devicePixelRatio),
                 width: 1280,
                 child: Column(
                   children: [
@@ -207,7 +211,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       indent: 17.1,
                       endIndent: 17.1,
                       color: basicWhite.fontColor,
-                    )
+                    ),
+                    Row(children: [
+                      //
+    // double devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    // double kAspectRatio = MediaQuery.of(context).size.aspectRatio;
+    // double kScreenWidth = MediaQuery.of(context).size.width;
+    // double kScreenHeight = MediaQuery.of(context).size.height;
+                      Text("  pixel ratio: " + devicePixelRatio.toString()),
+                      Text("  aspect ratio: " + kAspectRatio.toString()),
+                      Text("  width " + kScreenWidth.toString()),
+                      Text("  height " + kScreenHeight.toString()),
+                    ],)
                   ],
                 ))
           ]),

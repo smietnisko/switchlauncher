@@ -6,7 +6,9 @@ import '../theme.dart';
 
 class AppTile extends StatefulWidget {
   final String text;
-  const AppTile({Key? key, required this.text}) : super(key: key);
+  final double screenscale;
+  const AppTile({Key? key, required this.text, required this.screenscale})
+      : super(key: key);
 
   @override
   _AppTileState createState() => _AppTileState();
@@ -27,6 +29,7 @@ class _AppTileState extends State<AppTile> with TickerProviderStateMixin {
   }
 
   void _handleFocusChange() {
+    print("focus change");
     if (_node.hasFocus != _focused) {
       if (_node.hasFocus) {
         _focused = _node.hasFocus;
@@ -68,57 +71,73 @@ class _AppTileState extends State<AppTile> with TickerProviderStateMixin {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 31.42,
-                        child:
-                            OverflowBox(
-        maxWidth: double.infinity,
-                              alignment: Alignment.bottomCenter,
-                              child: Text((_focused) ? "this is some long App name" : "",
-                            softWrap: false,
-
-                            overflow: TextOverflow.visible,
-                textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 17.8, color: basicWhite.highlightFade, ), )),
+                        height: 55 * widget.screenscale,
+                        child: OverflowBox(
+                            maxWidth: double.infinity,
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              (_focused) ? "this is some long App name" : "",
+                              softWrap: false,
+                              overflow: TextOverflow.visible,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 17.8,
+                                color: basicWhite.highlightFade,
+                              ),
+                            )),
                       ),
                       SizedBox(
-                          height: 156.57,
-                          width: 156.57,
+                          height: 274 * widget.screenscale,
+                          width: 274 * widget.screenscale,
                           child: Container(
                             child: SizedBox(
-                          height: 156.57,
-                          width: 156.57,
-                          child: Container(
-                            child: Padding(
-                                padding: EdgeInsets.all(2.8),
-                                child: SizedBox(
-                                    height: 150.86,
-                                    child: Container(
-                                      child: Padding(
-                                          padding: EdgeInsets.all(2.8),
-                                          child: SizedBox(
-                                              height: 146.28,
-                                              child: Container(
-                                                child: Center(
-                                                    child: Center(
-                                                        child:
-                                                            Text(widget.text))),
-                                                decoration: BoxDecoration(
-                                                  color: basicWhite.accent,
-                                                ),
-                                              ))),
-                                      decoration: (_focused)
-                                          ? BoxDecoration(
-                                              color: basicWhite.background2)
-                                          : null,
-                                    ))),
-
-                            decoration: (_focused)
-                                ? BoxDecoration(
-                                    color: Color.fromRGBO(basicWhite.highlightFade.red, basicWhite.highlightFade.green, basicWhite.highlightFade.blue, value),
-                                    //color: value,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(2)))
-                                : null)),
+                                height: 274 * widget.screenscale,
+                                width: 274 * widget.screenscale,
+                                child: Container(
+                                    child: Padding(
+                                        padding: EdgeInsets.all(
+                                            5 * widget.screenscale),
+                                        child: SizedBox(
+                                            height: 264 * widget.screenscale,
+                                            width: 264 * widget.screenscale,
+                                            child: Container(
+                                              child: Padding(
+                                                  padding: EdgeInsets.all(
+                                                      4 * widget.screenscale),
+                                                  child: SizedBox(
+                                                      height: 256 *
+                                                          widget.screenscale,
+                                                      width: 256 *
+                                                          widget.screenscale,
+                                                      child: Container(
+                                                        child: Center(
+                                                            child: Center(
+                                                                child: Text(
+                                                                    widget
+                                                                        .text))),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              basicWhite.accent,
+                                                        ),
+                                                      ))),
+                                              decoration: (_focused)
+                                                  ? BoxDecoration(
+                                                      color: basicWhite
+                                                          .background2)
+                                                  : null,
+                                            ))),
+                                    decoration: (_focused)
+                                        ? BoxDecoration(
+                                            color: Color.fromRGBO(
+                                                basicWhite.highlightFade.red,
+                                                basicWhite.highlightFade.green,
+                                                basicWhite.highlightFade.blue,
+                                                value),
+                                            //color: value,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(2)))
+                                        : null)),
                             decoration: (_focused)
                                 ? BoxDecoration(
                                     color: basicWhite.highlight,
@@ -127,7 +146,7 @@ class _AppTileState extends State<AppTile> with TickerProviderStateMixin {
                                         BorderRadius.all(Radius.circular(2)))
                                 : null,
                           )),
-                          Expanded(child: Text(""))
+                      Expanded(child: Text(""))
                     ],
                   )));
         }));
