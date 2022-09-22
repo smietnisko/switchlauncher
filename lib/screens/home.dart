@@ -121,13 +121,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),),
             SizedBox(
                 height: (73 * devicePixelRatio),
-                width: 1280,
                 child: Column(
                   children: [
                     Divider(
-                      height: 0.5,
-                      indent: 17.1,
-                      endIndent: 17.1,
+                      height: 1 * devicePixelRatio,
+                      indent: 30 * devicePixelRatio,
+                      endIndent: 30 * devicePixelRatio,
                       color: basicWhite.fontColor,
                     ),
                     Row(children: [
