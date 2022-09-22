@@ -70,8 +70,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(top: 1),
-                                child: Text("21:37", style: TextStyle(fontSize: (26 * devicePixelRatio), fontWeight: FontWeight.bold),
-                                ),
+                                child:
+                                  StreamBuilder(
+                                    stream: Stream.periodic(const Duration(seconds: 1)),
+                                    builder: ((context, snapshot) => Text(TimeOfDay.now().format(context), style: TextStyle(fontSize: (26 * devicePixelRatio), fontWeight: FontWeight.bold))),)
+                                //,
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: (22 * devicePixelRatio)),
