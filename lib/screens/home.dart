@@ -109,63 +109,76 @@ class _HomeScreenState extends State<HomeScreen> {
                   ]),
                 )),
             SizedBox(
-                height: (374 * devicePixelRatio),
+                height: (373 * devicePixelRatio),
                 child: Container(
                     // color: basicBlack.highlight,
                     child: SizedBox(
-                        height: 140,
-                        child:
-                        PageView.builder(
-                            padEnds: true,
-                            pageSnapping: true,
-                            allowImplicitScrolling: true,
-
-                          physics: BouncingScrollPhysics(),
-                            controller: PageController(
-                                initialPage: 0,
-                                keepPage: false,
-                                viewportFraction: 0.185),
-                            itemCount: 10,
-                            itemBuilder: ((context, index) =>
-                                AppTile(screenscale: devicePixelRatio, text: "number " + index.toString()))
-                                ,
-                                ),
+                  height: 140,
+                  child: PageView.builder(
+                    padEnds: true,
+                    pageSnapping: true,
+                    allowImplicitScrolling: true,
+                    physics: BouncingScrollPhysics(),
+                    controller: PageController(
+                        initialPage: 0,
+                        keepPage: false,
+                        viewportFraction: 0.185),
+                    itemCount: 10,
+                    itemBuilder: ((context, index) => AppTile(
+                        screenscale: devicePixelRatio,
+                        text: "number " + index.toString())),
+                  ),
                 ))),
             SizedBox(
-                height: (143 * devicePixelRatio),
-                child:
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:[
-                       Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
-                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 0),
-                      ),
-                       Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
-                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 1),
-                       ),
-                       Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
-                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 2),
-                       ),
-                       Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
-                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 3),
-                       ),
-                       Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
-                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 4),
-                       ),
-                       Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
-                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 5),
-                       ),
-                       Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 11 * devicePixelRatio),
-                          child: AppCircle(text: "", screenscale: devicePixelRatio, index: 6),),
-                  ],
-                ),),
+              height: (144 * devicePixelRatio),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 10.2 * devicePixelRatio),
+                    child: AppCircle(
+                        text: "", screenscale: devicePixelRatio, index: 0),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 10.2 * devicePixelRatio),
+                    child: AppCircle(
+                        text: "", screenscale: devicePixelRatio, index: 1),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 10.2 * devicePixelRatio),
+                    child: AppCircle(
+                        text: "", screenscale: devicePixelRatio, index: 2),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 10.2 * devicePixelRatio),
+                    child: AppCircle(
+                        text: "", screenscale: devicePixelRatio, index: 3),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 10.2 * devicePixelRatio),
+                    child: AppCircle(
+                        text: "", screenscale: devicePixelRatio, index: 4),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 10.2 * devicePixelRatio),
+                    child: AppCircle(
+                        text: "", screenscale: devicePixelRatio, index: 5),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 10.2 * devicePixelRatio),
+                    child: AppCircle(
+                        text: "", screenscale: devicePixelRatio, index: 6),
+                  ),
+                ],
+              ),
+            ),
             SizedBox(
                 height: (73 * devicePixelRatio),
                 child: Column(

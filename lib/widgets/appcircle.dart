@@ -65,7 +65,7 @@ class _AppCircleState extends State<AppCircle> with TickerProviderStateMixin {
               splashColor: null,
               focusColor: null,
               hoverColor: null,
-              colorScheme: ColorScheme(
+              colorScheme: const ColorScheme(
                   brightness: Brightness.light,
                   primary: Colors.transparent,
                   onPrimary: Colors.transparent,
@@ -90,18 +90,18 @@ class _AppCircleState extends State<AppCircle> with TickerProviderStateMixin {
                   focusElevation: 0,
                   child: Column(children: [
                     SizedBox(
-                      height: 92 * widget.screenscale,
-                      width: 92 * widget.screenscale,
+                      height: 87 * widget.screenscale,
+                      width: 87 * widget.screenscale,
                       child: Container(
                         child: SizedBox(
-                          height: 92 * widget.screenscale,
-                          width: 92 * widget.screenscale,
+                          height: 87 * widget.screenscale,
+                          width: 87 * widget.screenscale,
                           child: Container(
                             child:
-                            Padding(padding: EdgeInsets.all( 3 * widget.screenscale) ,
+                            Padding(padding: EdgeInsets.all( 2 * widget.screenscale) ,
                             child: SizedBox(
-                              height: 86 * widget.screenscale,
-                              width: 86 * widget.screenscale,
+                              height: 85 * widget.screenscale,
+                              width: 85 * widget.screenscale,
                               child: Container(
                                 child: Text(""),
                                 decoration: BoxDecoration(
