@@ -6,6 +6,7 @@ import 'package:battery_plus/battery_plus.dart';
 import '../theme.dart';
 import '../widgets/appcircle.dart';
 import '../widgets/apptile.dart';
+import '../widgets/netindicator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -64,12 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                     Padding(
                         padding: EdgeInsets.fromLTRB(0, (50 * devicePixelRatio),
-                            (63 * devicePixelRatio), (53 * devicePixelRatio)),
+                            (63 * devicePixelRatio), (50 * devicePixelRatio)),
                         child: Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(top: 1),
+                                padding: EdgeInsets.only(top: 0),
                                 child:
                                   StreamBuilder(
                                     stream: Stream.periodic(const Duration(seconds: 1)),
@@ -78,23 +79,19 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: (22 * devicePixelRatio)),
-                                child: Icon(
-                                  Icons.wifi,
-                                  size: (29 * devicePixelRatio),
-                                  color: basicWhite.fontColor,
-                                ),
+                                child: NetworkIndicator(devicePixelRatio: devicePixelRatio, theme: basicWhite)
                               ),
                               Padding(
-                                padding: EdgeInsets.only(top: 1),
+                                padding: EdgeInsets.only(top: 0),
                                 child:
                                   Text(batteryLevel.toString() ,style: TextStyle(fontSize: (26 * devicePixelRatio), fontWeight: FontWeight.bold)),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(top: 8),
-                                child: Text("%",style: TextStyle(fontSize: (18 * devicePixelRatio), fontWeight: FontWeight.w900)),
+                                padding: EdgeInsets.only(top: 5),
+                                child: Text("%",style: TextStyle(fontSize: (17.6 * devicePixelRatio), fontWeight: FontWeight.w900)),
                               ),
                               Padding(
-                                  padding: EdgeInsets.fromLTRB(7 * devicePixelRatio, 5, 0, 0),
+                                  padding: EdgeInsets.fromLTRB(7 * devicePixelRatio, 4, 0, 4),
                                   child:
                                   SizedBox(
                                     height: 29 * devicePixelRatio,

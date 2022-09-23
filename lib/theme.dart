@@ -12,6 +12,7 @@ class LauncherTheme
   final Color highlightFade;
   final Color highlightFontColor;
   final Color fontColor;
+  final Color inactive;
 
   const LauncherTheme({
     required this.name,
@@ -23,6 +24,7 @@ class LauncherTheme
     required this.highlightFade,
     required this.highlightFontColor,
     required this.fontColor,
+    required this.inactive,
     });
 }
 
@@ -35,7 +37,8 @@ LauncherTheme basicWhite = const LauncherTheme(
   highlight: Color.fromARGB(255, 90, 240, 240),
   highlightFade: Color.fromARGB(255, 50, 197, 227),
   highlightFontColor: Color.fromARGB(255, 90, 240, 240),
-  fontColor: Color.fromARGB(255, 40, 40, 40)
+  fontColor: Color.fromARGB(255, 40, 40, 40),
+  inactive: Color.fromARGB(255, 180, 180, 180)
 );
 
 LauncherTheme basicBlack = const LauncherTheme(
@@ -47,6 +50,7 @@ LauncherTheme basicBlack = const LauncherTheme(
   highlight: Color.fromARGB(255, 90, 240, 240),
   highlightFade: Color.fromARGB(255, 50, 197, 227),
   highlightFontColor: Color.fromARGB(255, 0, 180, 232),
-  fontColor: Color.fromARGB(255, 255, 255, 255)
+  fontColor: Color.fromARGB(255, 255, 255, 255),
+  inactive: Color.fromARGB(255, 180, 180, 180)
 );
 

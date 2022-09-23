@@ -43,6 +43,11 @@ dependencies:
   responsive_framework: ^0.1.9
   battery_indicator: ^0.1.1
   battery_plus: ^2.1.4+1
+  signal_strength_indicator: ^0.4.1
+  connectivity_plus: ^2.3.7
+  wifi_info_plugin:
+    git:
+      url: https://github.com/Kirk-Patrick/flutter_wifi_info_plugin.git
 
 dev_dependencies:
   flutter_test:
