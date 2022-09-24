@@ -6,8 +6,15 @@ import '../theme.dart';
 
 class AppTile extends StatefulWidget {
   final String text;
+  final String appName;
   final double screenscale;
-  const AppTile({Key? key, required this.text, required this.screenscale})
+  final LauncherTheme theme;
+  const AppTile(
+      {Key? key,
+      required this.text,
+      required this.screenscale,
+      required this.theme,
+      this.appName = "sample"})
       : super(key: key);
 
   @override
@@ -29,7 +36,6 @@ class _AppTileState extends State<AppTile> with TickerProviderStateMixin {
   }
 
   void _handleFocusChange() {
-    print("focus change");
     if (_node.hasFocus != _focused) {
       if (_node.hasFocus) {
         _focused = _node.hasFocus;
@@ -47,16 +53,41 @@ class _AppTileState extends State<AppTile> with TickerProviderStateMixin {
     return KeyEventResult.ignored;
   }
 
+  Widget outerBorder(Color color) => SizedBox(
+      height: 274,
+      width: 274,
+      child: Container(
+        decoration: BoxDecoration(
+                color: color,
+                borderRadius: const BorderRadius.all(Radius.circular(4))),
+      ));
+  Widget get innerBorder => SizedBox(
+      height: 264,
+      width: 264,
+      child: Container(decoration: BoxDecoration(color: widget.theme.iconbg),
+      ));
+  Widget get __empty => const SizedBox.shrink();
+
+  Widget get _temptilefill => SizedBox(
+      height: 256,
+      width: 256,
+      child: Container(
+        child: Center(child: Center(child: Text(widget.text))),
+        decoration: BoxDecoration(
+          color: widget.theme.accent,
+        ),
+      ));
+
   @override
   Widget build(BuildContext context) {
     return MirrorAnimation<double>(
         tween: Tween(begin: 0, end: 1),
         curve: Curves.easeOut,
         duration: const Duration(milliseconds: 450),
-        builder: ((context, child, value) {
+        builder: ((context, child, animValue) {
           return ButtonTheme(
               //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))) ,
-              padding: EdgeInsets.all(0),
+              // padding: EdgeInsets.all(0),
               focusColor: Colors.transparent,
               highlightColor: Colors.transparent,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -82,70 +113,22 @@ class _AppTileState extends State<AppTile> with TickerProviderStateMixin {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 17.8,
-                                color: basicWhite.highlightFade,
+                                color: widget.theme.highlightFade,
                               ),
                             )),
                       ),
-                      SizedBox(
-                          height: 274 * widget.screenscale,
-                          width: 274 * widget.screenscale,
-                          child: Container(
-                            child: SizedBox(
-                                height: 274 * widget.screenscale,
-                                width: 274 * widget.screenscale,
-                                child: Container(
-                                    child: Padding(
-                                        padding: EdgeInsets.all(
-                                            5 * widget.screenscale),
-                                        child: SizedBox(
-                                            height: 264 * widget.screenscale,
-                                            width: 264 * widget.screenscale,
-                                            child: Container(
-                                              child: Padding(
-                                                  padding: EdgeInsets.all(
-                                                      4 * widget.screenscale),
-                                                  child: SizedBox(
-                                                      height: 256 *
-                                                          widget.screenscale,
-                                                      width: 256 *
-                                                          widget.screenscale,
-                                                      child: Container(
-                                                        child: Center(
-                                                            child: Center(
-                                                                child: Text(
-                                                                    widget
-                                                                        .text))),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              basicWhite.accent,
-                                                        ),
-                                                      ))),
-                                              decoration: (_focused)
-                                                  ? BoxDecoration(
-                                                      color: basicWhite
-                                                          .background2)
-                                                  : null,
-                                            ))),
-                                    decoration: (_focused)
-                                        ? BoxDecoration(
-                                            color: Color.fromRGBO(
-                                                basicWhite.highlightFade.red,
-                                                basicWhite.highlightFade.green,
-                                                basicWhite.highlightFade.blue,
-                                                value),
-                                            //color: value,
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(2)))
-                                        : null)),
-                            decoration: (_focused)
-                                ? BoxDecoration(
-                                    color: basicWhite.highlight,
-                                    //color: value,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(2)))
-                                : null,
-                          )),
+                      Stack(clipBehavior: Clip.none, children: [
+                        (_focused)? Positioned(left: -9,top: -9,child: outerBorder(widget.theme.highlight)) : __empty,
+                        (_focused)? Positioned(left: -9,top: -9,
+                                child: outerBorder(Color.fromRGBO(
+                                    widget.theme.highlightFade.red,
+                                    widget.theme.highlightFade.green,
+                                    widget.theme.highlightFade.blue,
+                                    animValue)))
+                            : __empty,
+                        (_focused)? Positioned(child: innerBorder,left: -4, top: -4,): __empty,
+                         _temptilefill,
+                      ]),
                       Expanded(child: Text(""))
                     ],
                   )));
@@ -153,3 +136,4 @@ class _AppTileState extends State<AppTile> with TickerProviderStateMixin {
     //
   }
 }
+

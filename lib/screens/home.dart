@@ -4,6 +4,7 @@ import '../theme.dart';
 import '../widgets/appcircle.dart';
 import '../widgets/apptile.dart';
 import '../widgets/statusbar.dart';
+import '../widgets/snapping_list_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -53,25 +54,40 @@ class _HomeScreenState extends State<HomeScreen> {
                 )),
             SizedBox(
                 height: (373 * devicePixelRatio),
-                child: Container(
-                    // color: basicBlack.highlight,
-                    child: SizedBox(
-                  height: 140,
-                  child: PageView.builder(
-                    padEnds: true,
-                    pageSnapping: true,
-                    allowImplicitScrolling: true,
-                    physics: BouncingScrollPhysics(),
-                    controller: PageController(
-                        initialPage: 0,
-                        keepPage: false,
-                        viewportFraction: 0.185),
-                    itemCount: 10,
-                    itemBuilder: ((context, index) => AppTile(
-                        screenscale: devicePixelRatio,
-                        text: "number " + index.toString())),
-                  ),
-                ))),
+                child: 
+                // GridView.builder(
+                //   scrollDirection: Axis.horizontal,
+                //   gridDelegate: 
+                //   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1, /*childAspectRatio: 1.36, */mainAxisExtent: 269, mainAxisSpacing: 0.1 ), 
+                //   itemBuilder: ((context, index) => AppTile(
+                //          screenscale: devicePixelRatio,
+                //          theme: basicWhite,
+                //          text: "number " + index.toString()))),
+                
+                // PageView.builder(
+                //     padEnds: true,
+                //     pageSnapping: false,
+                //     allowImplicitScrolling: true,
+                //     controller: PageController(
+                //         initialPage: 1,
+                //         keepPage: false,
+                //         viewportFraction: 0.21),
+                //     itemCount: 10,
+                //     itemBuilder: ((context, index) => AppTile(
+                //         screenscale: devicePixelRatio,
+                //         theme: basicWhite,
+                //         text: "number " + index.toString())),
+                // ),
+                SnappingListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 90),
+                  itemCount: 11,
+                  itemBuilder: ((context, index) => AppTile(
+                         screenscale: devicePixelRatio,
+                         theme: basicWhite,
+                         text: "number " + index.toString())), 
+                  itemExtent: 272)
+            ),
             SizedBox(
               height: (144 * devicePixelRatio),
               child: Row(
