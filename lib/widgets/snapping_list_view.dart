@@ -8,6 +8,8 @@ class SnappingListView extends StatefulWidget {
   final Axis scrollDirection;
   final ScrollController? controller;
 
+  final SnappingListScrollPhysics? physics;
+
   final IndexedWidgetBuilder? itemBuilder;
   final List<Widget>? children;
   final int? itemCount;
@@ -19,6 +21,7 @@ class SnappingListView extends StatefulWidget {
 
   SnappingListView(
       {this.scrollDirection = Axis.vertical,
+      this.physics,
       this.controller,
       required this.children,
       required this.itemExtent,
@@ -30,6 +33,7 @@ class SnappingListView extends StatefulWidget {
 
   SnappingListView.builder(
       {this.scrollDirection = Axis.vertical,
+      this.physics,
       this.controller,
       required this.itemBuilder,
       this.itemCount,
@@ -51,6 +55,9 @@ class _SnappingListViewState extends State<SnappingListView> {
     final startPadding = widget.scrollDirection == Axis.horizontal
         ? widget.padding.left
         : widget.padding.top;
+    final endPadding = widget.scrollDirection == Axis.horizontal
+        ? widget.padding.right
+        : widget.padding.bottom;
     final scrollPhysics = SnappingListScrollPhysics(
         mainAxisStartPadding: startPadding, itemExtent: widget.itemExtent);
     final listView = widget.children != null
@@ -59,7 +66,7 @@ class _SnappingListViewState extends State<SnappingListView> {
             controller: widget.controller,
             children: widget.children!,
             itemExtent: widget.itemExtent,
-            physics: scrollPhysics,
+            physics: widget.physics ?? scrollPhysics,
             padding: widget.padding)
         : ListView.builder(
             scrollDirection: widget.scrollDirection,
@@ -67,7 +74,7 @@ class _SnappingListViewState extends State<SnappingListView> {
             itemBuilder: widget.itemBuilder!,
             itemCount: widget.itemCount,
             itemExtent: widget.itemExtent,
-            physics: scrollPhysics,
+            physics: widget.physics ?? scrollPhysics,
             padding: widget.padding);
     return NotificationListener<ScrollNotification>(
         child: listView,
@@ -106,11 +113,11 @@ class SnappingListScrollPhysics extends ScrollPhysics {
   }
 
   double _getItem(ScrollMetrics position) {
-    return (position.pixels - mainAxisStartPadding) / itemExtent;
+    return (position.pixels) / itemExtent;
   }
 
   double _getPixels(ScrollMetrics position, double item) {
-    return min(item * itemExtent, position.maxScrollExtent);
+    return min((item) * itemExtent, (position.maxScrollExtent));
   }
 
   double _getTargetPixels(
