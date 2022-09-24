@@ -1,12 +1,9 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:battery_indicator/battery_indicator.dart';
-import 'package:battery_plus/battery_plus.dart';
 import '../theme.dart';
 import '../widgets/appcircle.dart';
 import '../widgets/apptile.dart';
-import '../widgets/netindicator.dart';
+import '../widgets/statusbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,11 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-    var batteryLevel = -1;
-    var _battery = Battery();
-    BatteryState? _batstat;
-
   @override
   initState() {
     super.initState();
@@ -30,23 +22,11 @@ class _HomeScreenState extends State<HomeScreen> {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
 
-
-    _battery.batteryLevel.then((value) => batteryLevel = value);
-
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-
-    _battery.onBatteryStateChanged.listen((BatteryState state) {
-      if(_batstat == null || _batstat != state)
-      {
-        _batstat = state;
-        _battery.batteryLevel.then((value) {setState(() {batteryLevel = value;});});
-      }
-     });
-
     //double devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
     double devicePixelRatio = MediaQuery.of(context).size.height / 720;
     double kAspectRatio = MediaQuery.of(context).size.aspectRatio;
@@ -66,46 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Padding(
                         padding: EdgeInsets.fromLTRB(0, (50 * devicePixelRatio),
                             (63 * devicePixelRatio), (50 * devicePixelRatio)),
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 0),
-                                child:
-                                  StreamBuilder(
-                                    stream: Stream.periodic(const Duration(seconds: 1)),
-                                    builder: ((context, snapshot) => Text(TimeOfDay.now().format(context), style: TextStyle(fontSize: (26 * devicePixelRatio), fontWeight: FontWeight.bold))),)
-                                //,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: (22 * devicePixelRatio)),
-                                child: NetworkIndicator(devicePixelRatio: devicePixelRatio, theme: basicWhite)
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 0),
-                                child:
-                                  Text(batteryLevel.toString() ,style: TextStyle(fontSize: (26 * devicePixelRatio), fontWeight: FontWeight.bold)),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 5),
-                                child: Text("%",style: TextStyle(fontSize: (17.6 * devicePixelRatio), fontWeight: FontWeight.w900)),
-                              ),
-                              Padding(
-                                  padding: EdgeInsets.fromLTRB(7 * devicePixelRatio, 4, 0, 4),
-                                  child:
-                                  SizedBox(
-                                    height: 29 * devicePixelRatio,
-                                  child: BatteryIndicator(
-                                    batteryFromPhone: true,
-                                    size: 35 * devicePixelRatio,
-                                    ratio: 1,
-                                    style: BatteryIndicatorStyle.skeumorphism,
-                                    mainColor: basicWhite.fontColor,
-                                    colorful: false,
-                                    showPercentNum: false,
-                                  ))
-                                  ),
-                            ]))
+                        child: StatusBar(
+                            devicePixelRatio: devicePixelRatio,
+                            theme: basicWhite))
                   ]),
                 )),
             SizedBox(
