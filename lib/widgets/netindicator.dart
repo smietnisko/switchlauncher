@@ -1,4 +1,8 @@
 // NetworkIndicator widget
+
+// TODO: flight mode icon
+// TODO: mobile data icons
+
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -24,7 +28,7 @@ class _NetworkIndicatorState extends State<NetworkIndicator>
 
   var subscription;
 
-   @override
+  @override
   void initState() {
     super.initState();
     initPlatformState();

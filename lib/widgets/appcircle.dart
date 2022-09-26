@@ -88,6 +88,12 @@ class _AppCircleState extends State<AppCircle> with TickerProviderStateMixin {
                   focusNode: _node,
                   elevation: 0,
                   focusElevation: 0,
+                  onPressed: (){
+                    if (!_focused) 
+                    {
+                      _node.requestFocus();
+                    }
+                  },
                   child: Column(children: [
                     SizedBox(
                       height: 87 * widget.screenscale,
@@ -129,39 +135,7 @@ class _AppCircleState extends State<AppCircle> with TickerProviderStateMixin {
                             : null,
                       ),
                     ),
-                    // (_focused)? OverflowBox(
-                    //       maxHeight: 15 * widget.screenscale,
-                    //        maxWidth: 20* widget.screenscale,
-                    //        alignment: Alignment.topCenter,
-                    //        child:
-                    // Text(
-                    //   (_focused) ? "this is some long App name" : " ",
-                    //   softWrap: false,
-                    //   overflow: TextOverflow.visible,
-                    //   textAlign: TextAlign.center,
-                    //   style: TextStyle(
-                    //     fontSize: 18 * widget.screenscale,
-                    //     color: basicWhite.highlightFade,
-                    //   ),
-                    // ),
-                    //        ) : Text(" "),
-                  ]),
-                  onPressed: () {})
-              // ElevatedButton(
-              //   onPressed: () {},
-              //   child: Text(""),
-              //   style: ElevatedButton.styleFrom(
-              //     elevation: 0.35,
-              //     minimumSize: Size.fromRadius(43 * devicePixelRatio),
-              //     maximumSize: Size.fromRadius(43 * devicePixelRatio),
-              //     shape: CircleBorder(),
-              //     primary: (widget.index == 0)
-              //         ? Color.fromARGB(255, 242, 16, 31)
-              //         : basicWhite.iconbg,
-              //     shadowColor: basicBlack.background2,
-              //     onPrimary: basicWhite.highlight, // <-- Splash color
-              //   ),
-              // ),
+                  ]),)
               );
         }));
     //

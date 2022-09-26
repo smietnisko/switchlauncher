@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:battery_indicator/battery_indicator.dart';
 import 'package:battery_plus/battery_plus.dart';
 import '../theme.dart';
+import '../widgets/forks/battery_indicator.dart';
 import '../widgets/netindicator.dart';
 
 class StatusBar extends StatefulWidget {

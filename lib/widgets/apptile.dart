@@ -96,7 +96,12 @@ class _AppTileState extends State<AppTile> with TickerProviderStateMixin {
                   highlightColor: Colors.transparent,
                   elevation: 1,
                   focusElevation: 2,
-                  onPressed: () {},
+                  onPressed: () {
+                    if (!_focused) 
+                    {
+                      _node.requestFocus();
+                    }
+                  },
                   onLongPress: () {},
                   focusNode: _node,
                   child: Column(

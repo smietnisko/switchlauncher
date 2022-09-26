@@ -4,7 +4,7 @@ import '../theme.dart';
 import '../widgets/appcircle.dart';
 import '../widgets/apptile.dart';
 import '../widgets/statusbar.dart';
-import '../widgets/snapping_list_view.dart';
+import '../widgets/forks/snapping_list_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // ),
                 SnappingListView.builder(
                   scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 90),
+                  padding: const EdgeInsets.symmetric(horizontal: 100),
                   itemCount: 11,
                   itemBuilder: ((context, index) => AppTile(
                          screenscale: devicePixelRatio,
